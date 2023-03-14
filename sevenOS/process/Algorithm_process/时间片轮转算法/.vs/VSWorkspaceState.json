@@ -1,0 +1,12 @@
+{
+  "ExpandedNodes": [
+    "",
+    "\\boot",
+    "\\boot\\include",
+    "\\include",
+    "\\kernel",
+    "\\lib"
+  ],
+  "SelectedNode": "\\kernel\\proc.c",
+  "PreviewInSolutionExplorer": false
+}

@@ -1,0 +1,581 @@
+
+Merging program properties
+
+Removed property 0xc0000002 to merge kernel/start.o (0x3) and kernel/kernel.o (not found)
+Removed property 0xc0000002 to merge kernel/start.o (not found) and kernel/main.o (0x3)
+Removed property 0xc0000002 to merge kernel/start.o (not found) and kernel/clock.o (0x3)
+Removed property 0xc0000002 to merge kernel/start.o (not found) and kernel/i8259.o (0x3)
+Removed property 0xc0000002 to merge kernel/start.o (not found) and kernel/global.o (0x3)
+Removed property 0xc0000002 to merge kernel/start.o (not found) and kernel/protect.o (0x3)
+Removed property 0xc0000002 to merge kernel/start.o (not found) and kernel/proc.o (0x3)
+Removed property 0xc0000002 to merge kernel/start.o (not found) and lib/klib.o (0x3)
+
+分配公共符号
+公共符号            大小              文件
+
+idt_ptr             0x6               kernel/global.o
+task_stack          0x1b000           kernel/global.o
+k_reenter           0x4               kernel/global.o
+gdt                 0x400             kernel/global.o
+tss                 0x68              kernel/global.o
+disp_pos            0x4               kernel/global.o
+resrc_process_table
+                    0x24              kernel/global.o
+gdt_ptr             0x6               kernel/global.o
+idt                 0x800             kernel/global.o
+ticks               0x4               kernel/global.o
+irq_table           0x40              kernel/global.o
+p_proc_ready        0x4               kernel/global.o
+proc_table          0x204             kernel/global.o
+
+舍弃的输入节
+
+ .group         0x0000000000000000        0x8 kernel/start.o
+ .note.GNU-stack
+                0x0000000000000000        0x0 kernel/start.o
+ .note.gnu.property
+                0x0000000000000000       0x1c kernel/start.o
+ .group         0x0000000000000000        0x8 kernel/main.o
+ .text.__x86.get_pc_thunk.bx
+                0x0000000000000000        0x4 kernel/main.o
+ .note.GNU-stack
+                0x0000000000000000        0x0 kernel/main.o
+ .note.gnu.property
+                0x0000000000000000       0x1c kernel/main.o
+ .group         0x0000000000000000        0x8 kernel/clock.o
+ .group         0x0000000000000000        0x8 kernel/clock.o
+ .text.__x86.get_pc_thunk.bx
+                0x0000000000000000        0x4 kernel/clock.o
+ .note.GNU-stack
+                0x0000000000000000        0x0 kernel/clock.o
+ .note.gnu.property
+                0x0000000000000000       0x1c kernel/clock.o
+ .group         0x0000000000000000        0x8 kernel/i8259.o
+ .text.__x86.get_pc_thunk.bx
+                0x0000000000000000        0x4 kernel/i8259.o
+ .note.GNU-stack
+                0x0000000000000000        0x0 kernel/i8259.o
+ .note.gnu.property
+                0x0000000000000000       0x1c kernel/i8259.o
+ .note.GNU-stack
+                0x0000000000000000        0x0 kernel/global.o
+ .note.gnu.property
+                0x0000000000000000       0x1c kernel/global.o
+ .group         0x0000000000000000        0x8 kernel/protect.o
+ .group         0x0000000000000000        0x8 kernel/protect.o
+ .text.__x86.get_pc_thunk.ax
+                0x0000000000000000        0x4 kernel/protect.o
+ .text.__x86.get_pc_thunk.bx
+                0x0000000000000000        0x4 kernel/protect.o
+ .note.GNU-stack
+                0x0000000000000000        0x0 kernel/protect.o
+ .note.gnu.property
+                0x0000000000000000       0x1c kernel/protect.o
+ .group         0x0000000000000000        0x8 kernel/proc.o
+ .group         0x0000000000000000        0x8 kernel/proc.o
+ .group         0x0000000000000000        0x8 kernel/proc.o
+ .group         0x0000000000000000        0x8 kernel/proc.o
+ .text.__x86.get_pc_thunk.ax
+                0x0000000000000000        0x4 kernel/proc.o
+ .text.__x86.get_pc_thunk.bx
+                0x0000000000000000        0x4 kernel/proc.o
+ .note.GNU-stack
+                0x0000000000000000        0x0 kernel/proc.o
+ .note.gnu.property
+                0x0000000000000000       0x1c kernel/proc.o
+ .group         0x0000000000000000        0x8 lib/klib.o
+ .group         0x0000000000000000        0x8 lib/klib.o
+ .text.__x86.get_pc_thunk.ax
+                0x0000000000000000        0x4 lib/klib.o
+ .text.__x86.get_pc_thunk.bx
+                0x0000000000000000        0x4 lib/klib.o
+ .note.GNU-stack
+                0x0000000000000000        0x0 lib/klib.o
+ .note.gnu.property
+                0x0000000000000000       0x1c lib/klib.o
+
+内存配置
+
+名称           来源             长度             属性
+*default*        0x0000000000000000 0xffffffffffffffff
+
+链结器命令稿和内存映射
+
+段 .text 的地址设置为 0x30400
+LOAD kernel/kernel.o
+LOAD kernel/syscall.o
+LOAD kernel/start.o
+LOAD kernel/main.o
+LOAD kernel/clock.o
+LOAD kernel/i8259.o
+LOAD kernel/global.o
+LOAD kernel/protect.o
+LOAD kernel/proc.o
+LOAD lib/kliba.o
+LOAD lib/klib.o
+LOAD lib/string.o
+                [!provide]                        PROVIDE (__executable_start = SEGMENT_START ("text-segment", 0x8048000))
+                0x00000000080480d4                . = (SEGMENT_START ("text-segment", 0x8048000) + SIZEOF_HEADERS)
+
+.interp
+ *(.interp)
+
+.note.gnu.build-id
+ *(.note.gnu.build-id)
+
+.hash
+ *(.hash)
+
+.gnu.hash
+ *(.gnu.hash)
+
+.dynsym
+ *(.dynsym)
+
+.dynstr
+ *(.dynstr)
+
+.gnu.version
+ *(.gnu.version)
+
+.gnu.version_d
+ *(.gnu.version_d)
+
+.gnu.version_r
+ *(.gnu.version_r)
+
+.rel.dyn        0x00000000080480d4        0x0
+ *(.rel.init)
+ *(.rel.text .rel.text.* .rel.gnu.linkonce.t.*)
+ .rel.text      0x00000000080480d4        0x0 kernel/kernel.o
+ *(.rel.fini)
+ *(.rel.rodata .rel.rodata.* .rel.gnu.linkonce.r.*)
+ *(.rel.data.rel.ro .rel.data.rel.ro.* .rel.gnu.linkonce.d.rel.ro.*)
+ *(.rel.data .rel.data.* .rel.gnu.linkonce.d.*)
+ *(.rel.tdata .rel.tdata.* .rel.gnu.linkonce.td.*)
+ *(.rel.tbss .rel.tbss.* .rel.gnu.linkonce.tb.*)
+ *(.rel.ctors)
+ *(.rel.dtors)
+ *(.rel.got)
+ .rel.got       0x00000000080480d4        0x0 kernel/kernel.o
+ *(.rel.bss .rel.bss.* .rel.gnu.linkonce.b.*)
+ *(.rel.ifunc)
+
+.rel.plt        0x00000000080480d4        0x0
+ *(.rel.plt)
+                [!provide]                        PROVIDE (__rel_iplt_start = .)
+ *(.rel.iplt)
+ .rel.iplt      0x00000000080480d4        0x0 kernel/kernel.o
+                [!provide]                        PROVIDE (__rel_iplt_end = .)
+                0x0000000008049000                . = ALIGN (CONSTANT (MAXPAGESIZE))
+
+.init
+ *(SORT_NONE(.init))
+
+.plt            0x0000000008049000        0x0
+ *(.plt)
+ *(.iplt)
+ .iplt          0x0000000008049000        0x0 kernel/kernel.o
+
+.plt.got
+ *(.plt.got)
+
+.plt.sec
+ *(.plt.sec)
+
+.text           0x0000000000030400     0x1772
+ *(.text.unlikely .text.*_unlikely .text.unlikely.*)
+ *(.text.exit .text.exit.*)
+ *(.text.startup .text.startup.*)
+ *(.text.hot .text.hot.*)
+ *(SORT_BY_NAME(.text.sorted.*))
+ *(.text .stub .text.* .gnu.linkonce.t.*)
+ .text          0x0000000000030400      0x30d kernel/kernel.o
+                0x0000000000030400                _start
+                0x0000000000030440                hwint00
+                0x0000000000030470                hwint01
+                0x00000000000304a0                hwint02
+                0x00000000000304d0                hwint03
+                0x0000000000030500                hwint04
+                0x0000000000030530                hwint05
+                0x0000000000030560                hwint06
+                0x0000000000030590                hwint07
+                0x00000000000305c0                hwint08
+                0x00000000000305d0                hwint09
+                0x00000000000305e0                hwint10
+                0x00000000000305f0                hwint11
+                0x0000000000030600                hwint12
+                0x0000000000030610                hwint13
+                0x0000000000030620                hwint14
+                0x0000000000030630                hwint15
+                0x000000000003063b                divide_error
+                0x0000000000030641                single_step_exception
+                0x0000000000030647                nmi
+                0x000000000003064d                breakpoint_exception
+                0x0000000000030653                overflow
+                0x0000000000030659                bounds_check
+                0x000000000003065f                inval_opcode
+                0x0000000000030665                copr_not_available
+                0x000000000003066b                double_fault
+                0x000000000003066f                copr_seg_overrun
+                0x0000000000030675                inval_tss
+                0x0000000000030679                segment_not_present
+                0x000000000003067d                stack_exception
+                0x0000000000030681                general_protection
+                0x0000000000030685                page_fault
+                0x0000000000030689                copr_error
+                0x00000000000306cc                sys_call
+                0x00000000000306e8                restart
+ *fill*         0x000000000003070d        0x3 
+ .text          0x0000000000030710       0x28 kernel/syscall.o
+                0x0000000000030710                get_ticks
+                0x0000000000030718                apply_resrc
+                0x0000000000030724                print_resrc
+                0x000000000003072c                release_resrc
+ .text          0x0000000000030738       0xc7 kernel/start.o
+                0x0000000000030738                cstart
+ .text.__x86.get_pc_thunk.bx
+                0x00000000000307ff        0x4 kernel/start.o
+                0x00000000000307ff                __x86.get_pc_thunk.bx
+ .text          0x0000000000030803      0x46e kernel/main.o
+                0x0000000000030803                kernel_main
+                0x0000000000030b24                TestA
+                0x0000000000030b93                TestB
+                0x0000000000030c02                TestC
+ .text          0x0000000000030c71       0xa6 kernel/clock.o
+                0x0000000000030c71                clock_handler
+                0x0000000000030cd8                milli_delay
+ .text.__x86.get_pc_thunk.ax
+                0x0000000000030d17        0x4 kernel/clock.o
+                0x0000000000030d17                __x86.get_pc_thunk.ax
+ .text          0x0000000000030d1b      0x174 kernel/i8259.o
+                0x0000000000030d1b                init_8259A
+                0x0000000000030e08                spurious_irq
+                0x0000000000030e56                put_irq_handler
+ .text          0x0000000000030e8f        0x0 kernel/global.o
+ .text          0x0000000000030e8f      0x6d7 kernel/protect.o
+                0x0000000000030e8f                init_prot
+                0x0000000000031330                seg2phys
+                0x000000000003140b                exception_handler
+ .text          0x0000000000031566      0x365 kernel/proc.o
+                0x0000000000031566                schedule
+                0x0000000000031604                sys_get_ticks
+                0x000000000003161f                sys_apply_resrc
+                0x0000000000031719                sys_print_resrc
+                0x00000000000317d3                sys_release_resrc
+                0x000000000003186d                dead_lock
+ .text.__x86.get_pc_thunk.dx
+                0x00000000000318cb        0x4 kernel/proc.o
+                0x00000000000318cb                __x86.get_pc_thunk.dx
+ .text.__x86.get_pc_thunk.cx
+                0x00000000000318cf        0x4 kernel/proc.o
+                0x00000000000318cf                __x86.get_pc_thunk.cx
+ *fill*         0x00000000000318d3        0xd 
+ .text          0x00000000000318e0       0xe7 lib/kliba.o
+                0x00000000000318e0                disp_str
+                0x000000000003191e                disp_color_str
+                0x000000000003195d                out_byte
+                0x0000000000031969                in_byte
+                0x0000000000031973                disable_irq
+                0x00000000000319a8                enable_irq
+ .text          0x00000000000319c7      0x149 lib/klib.o
+                0x00000000000319c7                itoa
+                0x0000000000031a80                disp_int
+                0x0000000000031aba                delay
+ .text          0x0000000000031b10       0x62 lib/string.o
+                0x0000000000031b10                memcpy
+                0x0000000000031b39                memset
+                0x0000000000031b5a                strcpy
+ *(.gnu.warning)
+
+.fini
+ *(SORT_NONE(.fini))
+                [!provide]                        PROVIDE (__etext = .)
+                [!provide]                        PROVIDE (_etext = .)
+                [!provide]                        PROVIDE (etext = .)
+                0x0000000000032000                . = ALIGN (CONSTANT (MAXPAGESIZE))
+                0x0000000000032000                . = SEGMENT_START ("rodata-segment", (ALIGN (CONSTANT (MAXPAGESIZE)) + (. & (CONSTANT (MAXPAGESIZE) - 0x1))))
+
+.rodata         0x0000000000032000      0x5f9
+ *(.rodata .rodata.* .gnu.linkonce.r.*)
+ .rodata        0x0000000000032000       0x47 kernel/start.o
+ *fill*         0x0000000000032047        0x1 
+ .rodata        0x0000000000032048       0x29 kernel/main.o
+ .rodata        0x0000000000032071       0x11 kernel/i8259.o
+ *fill*         0x0000000000032082       0x1e 
+ .rodata        0x00000000000320a0      0x540 kernel/protect.o
+ .rodata        0x00000000000325e0       0x19 kernel/proc.o
+
+.rodata1
+ *(.rodata1)
+
+.eh_frame_hdr
+ *(.eh_frame_hdr)
+ *(.eh_frame_entry .eh_frame_entry.*)
+
+.eh_frame       0x00000000000325fc      0x3a0
+ *(.eh_frame)
+ .eh_frame      0x00000000000325fc       0x50 kernel/start.o
+ .eh_frame      0x000000000003264c       0x70 kernel/main.o
+                                         0x9c (松开之前的大小)
+ .eh_frame      0x00000000000326bc       0x5c kernel/clock.o
+                                         0x88 (松开之前的大小)
+ .eh_frame      0x0000000000032718       0x6c kernel/i8259.o
+                                         0x98 (松开之前的大小)
+ .eh_frame      0x0000000000032784       0xb8 kernel/protect.o
+                                         0xf8 (松开之前的大小)
+ .eh_frame      0x000000000003283c       0xfc kernel/proc.o
+                                        0x13c (松开之前的大小)
+ .eh_frame      0x0000000000032938       0x64 lib/klib.o
+                                         0xa4 (松开之前的大小)
+ *(.eh_frame.*)
+
+.gcc_except_table
+ *(.gcc_except_table .gcc_except_table.*)
+
+.gnu_extab
+ *(.gnu_extab*)
+
+.exception_ranges
+ *(.exception_ranges*)
+                0x0000000000034000                . = DATA_SEGMENT_ALIGN (CONSTANT (MAXPAGESIZE), CONSTANT (COMMONPAGESIZE))
+
+.eh_frame
+ *(.eh_frame)
+ *(.eh_frame.*)
+
+.gnu_extab
+ *(.gnu_extab)
+
+.gcc_except_table
+ *(.gcc_except_table .gcc_except_table.*)
+
+.exception_ranges
+ *(.exception_ranges*)
+
+.tdata          0x0000000000034000        0x0
+                [!provide]                        PROVIDE (__tdata_start = .)
+ *(.tdata .tdata.* .gnu.linkonce.td.*)
+
+.tbss
+ *(.tbss .tbss.* .gnu.linkonce.tb.*)
+ *(.tcommon)
+
+.preinit_array  0x0000000000034000        0x0
+                [!provide]                        PROVIDE (__preinit_array_start = .)
+ *(.preinit_array)
+                [!provide]                        PROVIDE (__preinit_array_end = .)
+
+.init_array     0x0000000000034000        0x0
+                [!provide]                        PROVIDE (__init_array_start = .)
+ *(SORT_BY_INIT_PRIORITY(.init_array.*) SORT_BY_INIT_PRIORITY(.ctors.*))
+ *(.init_array EXCLUDE_FILE(*crtend?.o *crtend.o *crtbegin?.o *crtbegin.o) .ctors)
+                [!provide]                        PROVIDE (__init_array_end = .)
+
+.fini_array     0x0000000000034000        0x0
+                [!provide]                        PROVIDE (__fini_array_start = .)
+ *(SORT_BY_INIT_PRIORITY(.fini_array.*) SORT_BY_INIT_PRIORITY(.dtors.*))
+ *(.fini_array EXCLUDE_FILE(*crtend?.o *crtend.o *crtbegin?.o *crtbegin.o) .dtors)
+                [!provide]                        PROVIDE (__fini_array_end = .)
+
+.ctors
+ *crtbegin.o(.ctors)
+ *crtbegin?.o(.ctors)
+ *(EXCLUDE_FILE(*crtend?.o *crtend.o) .ctors)
+ *(SORT_BY_NAME(.ctors.*))
+ *(.ctors)
+
+.dtors
+ *crtbegin.o(.dtors)
+ *crtbegin?.o(.dtors)
+ *(EXCLUDE_FILE(*crtend?.o *crtend.o) .dtors)
+ *(SORT_BY_NAME(.dtors.*))
+ *(.dtors)
+
+.jcr
+ *(.jcr)
+
+.data.rel.ro
+ *(.data.rel.ro.local* .gnu.linkonce.d.rel.ro.local.*)
+ *(.data.rel.ro .data.rel.ro.* .gnu.linkonce.d.rel.ro.*)
+
+.dynamic
+ *(.dynamic)
+
+.got            0x0000000000034000        0x0
+ *(.got)
+ .got           0x0000000000034000        0x0 kernel/kernel.o
+ *(.igot)
+                0x0000000000034ff4                . = DATA_SEGMENT_RELRO_END (., (SIZEOF (.got.plt) >= 0xc)?0xc:0x0)
+
+.got.plt        0x0000000000034000        0xc
+ *(.got.plt)
+ .got.plt       0x0000000000034000        0xc kernel/kernel.o
+                0x0000000000034000                _GLOBAL_OFFSET_TABLE_
+ *(.igot.plt)
+ .igot.plt      0x000000000003400c        0x0 kernel/kernel.o
+
+.data           0x0000000000034020      0x128
+ *(.data .data.* .gnu.linkonce.d.*)
+ .data          0x0000000000034020        0x2 kernel/kernel.o
+ .data          0x0000000000034022        0x0 kernel/start.o
+ .data          0x0000000000034022        0x0 kernel/main.o
+ .data          0x0000000000034022        0x0 kernel/clock.o
+ .data          0x0000000000034022        0x0 kernel/i8259.o
+ *fill*         0x0000000000034022       0x1e 
+ .data          0x0000000000034040       0x78 kernel/global.o
+                0x0000000000034040                resrc_table
+ *fill*         0x00000000000340b8        0x8 
+ .data.rel      0x00000000000340c0       0x88 kernel/global.o
+                0x00000000000340c0                task_table
+                0x0000000000034138                sys_call_table
+ .data          0x0000000000034148        0x0 kernel/protect.o
+ .data          0x0000000000034148        0x0 kernel/proc.o
+ .data          0x0000000000034148        0x0 lib/klib.o
+
+.data1
+ *(.data1)
+                0x0000000000034148                _edata = .
+                [!provide]                        PROVIDE (edata = .)
+                0x0000000000034148                . = .
+                0x0000000000034148                __bss_start = .
+
+.bss            0x0000000000034160    0x1c784
+ *(.dynbss)
+ *(.bss .bss.* .gnu.linkonce.b.*)
+ .bss           0x0000000000034160      0x800 kernel/kernel.o
+ .bss           0x0000000000034960        0x0 kernel/start.o
+ .bss           0x0000000000034960        0x0 kernel/main.o
+ .bss           0x0000000000034960        0x0 kernel/clock.o
+ .bss           0x0000000000034960        0x0 kernel/i8259.o
+ .bss           0x0000000000034960        0x0 kernel/global.o
+ .bss           0x0000000000034960        0x0 kernel/protect.o
+ .bss           0x0000000000034960        0x0 kernel/proc.o
+ .bss           0x0000000000034960        0x0 lib/klib.o
+ *(COMMON)
+ COMMON         0x0000000000034960    0x1bf84 kernel/global.o
+                0x0000000000034960                idt_ptr
+                0x0000000000034980                task_stack
+                0x000000000004f980                k_reenter
+                0x000000000004f9a0                gdt
+                0x000000000004fda0                tss
+                0x000000000004fe08                disp_pos
+                0x000000000004fe20                resrc_process_table
+                0x000000000004fe44                gdt_ptr
+                0x000000000004fe60                idt
+                0x0000000000050660                ticks
+                0x0000000000050680                irq_table
+                0x00000000000506c0                p_proc_ready
+                0x00000000000506e0                proc_table
+                0x00000000000508e4                . = ALIGN ((. != 0x0)?0x4:0x1)
+                0x00000000000508e4                . = ALIGN (0x4)
+                0x00000000000508e4                . = SEGMENT_START ("ldata-segment", .)
+                0x00000000000508e4                . = ALIGN (0x4)
+                0x00000000000508e4                _end = .
+                [!provide]                        PROVIDE (end = .)
+                0x00000000000508e4                . = DATA_SEGMENT_END (.)
+
+.stab
+ *(.stab)
+
+.stabstr
+ *(.stabstr)
+
+.stab.excl
+ *(.stab.excl)
+
+.stab.exclstr
+ *(.stab.exclstr)
+
+.stab.index
+ *(.stab.index)
+
+.stab.indexstr
+ *(.stab.indexstr)
+
+.comment        0x0000000000000000       0x24
+ *(.comment)
+ .comment       0x0000000000000000       0x24 kernel/start.o
+                                         0x25 (松开之前的大小)
+ .comment       0x0000000000000024       0x25 kernel/main.o
+ .comment       0x0000000000000024       0x25 kernel/clock.o
+ .comment       0x0000000000000024       0x25 kernel/i8259.o
+ .comment       0x0000000000000024       0x25 kernel/global.o
+ .comment       0x0000000000000024       0x25 kernel/protect.o
+ .comment       0x0000000000000024       0x25 kernel/proc.o
+ .comment       0x0000000000000024       0x25 lib/klib.o
+
+.gnu.build.attributes
+ *(.gnu.build.attributes .gnu.build.attributes.*)
+
+.debug
+ *(.debug)
+
+.line
+ *(.line)
+
+.debug_srcinfo
+ *(.debug_srcinfo)
+
+.debug_sfnames
+ *(.debug_sfnames)
+
+.debug_aranges
+ *(.debug_aranges)
+
+.debug_pubnames
+ *(.debug_pubnames)
+
+.debug_info
+ *(.debug_info .gnu.linkonce.wi.*)
+
+.debug_abbrev
+ *(.debug_abbrev)
+
+.debug_line
+ *(.debug_line .debug_line.* .debug_line_end)
+
+.debug_frame
+ *(.debug_frame)
+
+.debug_str
+ *(.debug_str)
+
+.debug_loc
+ *(.debug_loc)
+
+.debug_macinfo
+ *(.debug_macinfo)
+
+.debug_weaknames
+ *(.debug_weaknames)
+
+.debug_funcnames
+ *(.debug_funcnames)
+
+.debug_typenames
+ *(.debug_typenames)
+
+.debug_varnames
+ *(.debug_varnames)
+
+.debug_pubtypes
+ *(.debug_pubtypes)
+
+.debug_ranges
+ *(.debug_ranges)
+
+.debug_macro
+ *(.debug_macro)
+
+.debug_addr
+ *(.debug_addr)
+
+.gnu.attributes
+ *(.gnu.attributes)
+
+/DISCARD/
+ *(.note.GNU-stack)
+ *(.gnu_debuglink)
+ *(.gnu.lto_*)
+OUTPUT(kernel.bin elf32-i386)
