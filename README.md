@@ -1,6 +1,6 @@
 # SevenOS
 
-## **1 **项目背景
+## 1 项目背景
 
 ### **1.1** **项目目的**
 
@@ -103,7 +103,7 @@
 
 修改`bochsrc`文件中的工作路径后，在终端运行bochs，回车后输入'c'，即可进入系统。
 
-<img src="/Users/dzy/Library/Application Support/typora-user-images/image-20200805192953196.png" alt="image-20200805192953196" style="zoom:50%;" />
+<img src="assets/open.png" alt="image-20200805192953196" style="zoom:50%;" />
 
 ### 3.2 **界面及命令行**
 
@@ -111,7 +111,7 @@
 
 控制台界面也是帮助界面，显示所有功能的命令及概要介绍。输入各命令即可进入相应功能界面。若想回到主界面（help界面），在命令行中输入**help**即可。
 
-<img src="/Users/dzy/Library/Application Support/typora-user-images/image-20200806100814987.png" alt="image-20200806100814987" style="zoom:50%;" />
+<img src="assets/main.png" alt="image-20200806100814987" style="zoom:50%;" />
 
 #### 3.2.2 帮助界面
 
@@ -119,27 +119,27 @@
 
 ##### 3.2.2.1 more help
 
-<img src="/Users/dzy/Library/Application Support/typora-user-images/image-20200805193837181.png" alt="image-20200805193837181" style="zoom:50%;" />
+<img src="assets/morehelp.png" alt="image-20200805193837181" style="zoom:50%;" />
 
 ##### 3.2.2.2 more clear
 
-<img src="/Users/dzy/Library/Application Support/typora-user-images/image-20200805194030436.png" alt="image-20200805194030436" style="zoom:50%;" />
+<img src="assets/clear.png" alt="image-20200805194030436" style="zoom:50%;" />
 
 ##### 3.2.2.3 more game
 
-<img src="/Users/dzy/Library/Application Support/typora-user-images/image-20200805194142821.png" alt="image-20200805194142821" style="zoom:50%;" />
+<img src="assets/game.png" alt="image-20200805194142821" style="zoom:50%;" />
 
 ##### 3.2.2.4 more math
 
-<img src="/Users/dzy/Library/Application Support/typora-user-images/image-20200805194202702.png" alt="image-20200805194202702" style="zoom:50%;" />
+<img src="assets/math.png" alt="image-20200805194202702" style="zoom:50%;" />
 
 ##### 3.2.2.5 more file
 
-<img src="/Users/dzy/Library/Application Support/typora-user-images/image-20200805194218540.png" alt="image-20200805194218540" style="zoom:50%;" />\
+<img src="assets/file.png" alt="image-20200805194218540" style="zoom:50%;" />\
 
 #### 3.2.3 命令不存在
 
-<img src="/Users/dzy/Library/Application Support/typora-user-images/image-20200805194318332.png" alt="image-20200805194318332" style="zoom:50%;" />
+<img src="assets/notfound.png" alt="image-20200805194318332" style="zoom:50%;" />
 
 ### 3.3 **文件系统**
 
@@ -147,77 +147,77 @@
 
 #### 3.3.1 进入文件系统
 
-<img src="/Users/dzy/Library/Application Support/typora-user-images/image-20200805194608252.png" alt="image-20200805194608252" style="zoom:50%;" />
+<img src="assets/filemanage.png" alt="image-20200805194608252" style="zoom:50%;" />
 
 #### 3.3.2 创建文件（.txt文件）
 
 命令：create 文件名
 
-![image-20200805194921075](/Users/dzy/Library/Application Support/typora-user-images/image-20200805194921075.png)
+![image-20200805194921075](assets/create.png)
 
 #### 3.3.3 创建文件夹
 
 命令：mkdir 文件夹名
 
-![image-20200805195002374](/Users/dzy/Library/Application Support/typora-user-images/image-20200805195002374.png)
+![image-20200805195002374](assets/mkdir.png)
 
 #### 3.3.4 显示当前目录全部文件
 
 命令：ls
 
-<img src="/Users/dzy/Library/Application Support/typora-user-images/image-20200805195028157.png" alt="image-20200805195028157" style="zoom:67%;" />
+<img src="assets/ls.png" alt="image-20200805195028157" style="zoom:67%;" />
 
 #### 3.3.5 进入下一级文件夹
 
 命令：cd 文件夹名
 
-<img src="/Users/dzy/Library/Application Support/typora-user-images/image-20200805195152268.png" alt="image-20200805195152268" style="zoom:67%;" />
+<img src="assets/cd.png" alt="image-20200805195152268" style="zoom:67%;" />
 
 错误测试：不可以使用`cd`命令进入文本文件，会输出相应提示：
 
-<img src="/Users/dzy/Library/Application Support/typora-user-images/image-20200805195517737.png" alt="image-20200805195517737" style="zoom:67%;" />
+<img src="assets/cderror.png" alt="image-20200805195517737" style="zoom:67%;" />
 
 #### 3.3.6 返回上一级
 
 命令：cd..
 
-<img src="/Users/dzy/Library/Application Support/typora-user-images/image-20200805195228098.png" alt="image-20200805195228098" style="zoom:67%;" />
+<img src="assets/cd...png" alt="image-20200805195228098" style="zoom:67%;" />
 
 #### 3.3.7 删除文件/文件夹
 
 命令：rm 文件名/文件夹名
 
-<img src="/Users/dzy/Library/Application Support/typora-user-images/image-20200805195321934.png" alt="image-20200805195321934" style="zoom:67%;" />
+<img src="assets/rm.png" alt="image-20200805195321934" style="zoom:67%;" />
 
 #### 3.3.8 读取文本文件
 
 命令：read 文件名
 
-<img src="/Users/dzy/Library/Application Support/typora-user-images/image-20200805195359367.png" alt="image-20200805195359367" style="zoom:67%;" />
+<img src="assets/read.png" alt="image-20200805195359367" style="zoom:67%;" />
 
 错误测试：不可以使用`read`命令读取文件夹，会输出相应提示：
 
-<img src="/Users/dzy/Library/Application Support/typora-user-images/image-20200805195623550.png" alt="image-20200805195623550" style="zoom:67%;" />
+<img src="assets/readerror.png" alt="image-20200805195623550" style="zoom:67%;" />
 
 #### 3.3.9 编辑文本文件
 
 命令：edit 文件名
 
-<img src="/Users/dzy/Library/Application Support/typora-user-images/image-20200805195736871.png" alt="image-20200805195736871" style="zoom:67%;" />
+<img src="assets/edit.png" alt="image-20200805195736871" style="zoom:67%;" />
 
 错误测试：不可以使用`edit`命令读取文件夹，会输出相应提示：
 
-<img src="/Users/dzy/Library/Application Support/typora-user-images/image-20200805195813541.png" alt="image-20200805195813541" style="zoom:67%;" />
+<img src="assets/editerror.png" alt="image-20200805195813541" style="zoom:67%;" />
 
 #### 3.3.10 保存到磁盘
 
 命令：save
 
-![image-20200805195839212](/Users/dzy/Library/Application Support/typora-user-images/image-20200805195839212.png)
+![image-20200805195839212](assets/save.png)
 
 在退出时，为了防止用户忘记执行save指令，会进行退出系统的提示：
 
-<img src="/Users/dzy/Library/Application Support/typora-user-images/image-20200805195922365.png" alt="image-20200805195922365" style="zoom:67%;" />
+<img src="assets/savehint.png" alt="image-20200805195922365" style="zoom:67%;" />
 
 ### 3.4 **进程管理**
 
@@ -227,22 +227,19 @@
 
 -   先到先服务算法：设置ticks为进程运行总时间，enter_time模拟进入时间，最早进入的先执行。所有进程ticks减为0终止。
 
-
-<img src="/Users/dzy/Library/Application Support/typora-user-images/image-20200806164104221.png" alt="image-20200806164104221" style="zoom:50%;" />
+<img src="assets/fifo.png" alt="image-20200806164104221" style="zoom:50%;" />
 
 -   时间片轮转算法：设置相同ticks，即模拟相同大小时间片，时间片运行完切换进程，循环无限轮转。
 
-
-<img src="/Users/dzy/Library/Application Support/typora-user-images/image-20200806164104221.png" alt="image-20200806164104221" style="zoom: 50%;" />
+<img src="../../Library/Application Support/typora-user-images/image-20200806164104221.png" alt="image-20200806164104221" style="zoom: 50%;" />
 
 -   最短作业优先算法：设置ticks为进程运行总时间，ticks最小者优先运行。所有进程ticks减为0终止。
 
-
-<img src="/Users/dzy/Library/Application Support/typora-user-images/image-20200806164121674.png" alt="image-20200806164121674" style="zoom:50%;" />
+<img src="assets/tick2.png" alt="image-20200806164121674" style="zoom:50%;" />
 
 -   多级队列算法：设置priority为进程优先级，即对应队列时间片的大小。keep为各进程运行总时间。各进程运行完各自队列的时间片切换进程，循环往复直到所有进程keep减为0终止。
 
-<img src="/Users/dzy/Library/Application Support/typora-user-images/image-20200806164141906.png" alt="image-20200806164141906" style="zoom:50%;" />
+<img src="assets/queue.png" alt="image-20200806164141906" style="zoom:50%;" />
 
 #### 3.4.2 进程的创建与杀死
 
@@ -250,7 +247,7 @@
 
 为了检验与应用进程创建与杀死的方法，选择实现一个抢占式的调度算法，orange原本就有一个全局变量ticks记录系统中断的次数，设定当ticks为某数的倍数时，自动创建或杀死一个进程，直到所有进程都执行完为止，运行截图如下：
 
-<img src="/Users/dzy/Library/Application Support/typora-user-images/image-20200806173520360.png" alt="image-20200806173520360" style="zoom:67%;" />
+<img src="assets/tick3.png" alt="image-20200806173520360" style="zoom:67%;" />
 
 当创建一个进程时，会有create： xx的字样代表创建进程的进程在运行，杀死一个进程时，会有Remove： xx的字样表示杀死进程的进程在运行，最终所有进程都运行完毕，输出END字样。
 
@@ -258,7 +255,7 @@
 
 实现三个系统调用apply，print，release表示申请、显示、释放资源，另有一个粗浅判断死锁的dead_lock函数，若申请资源后当前有资源被占用且所有程序无法释放资源时，为死锁状态。运行截图如下：
 
-<img src="/Users/dzy/Library/Application Support/typora-user-images/image-20200806173621590.png" alt="image-20200806173621590" style="zoom:50%;" />
+<img src="assets/tick4.png" alt="image-20200806173621590" style="zoom:50%;" />
 
 如图所示，程序每申请一个资源，就在屏幕上显示该资源。
 
@@ -268,67 +265,67 @@
 
 命令：math 表达式
 
-<img src="/Users/dzy/Library/Application Support/typora-user-images/image-20200805200307410.png" alt="image-20200805200307410" style="zoom:67%;" />
+<img src="assets/math1.png" alt="image-20200805200307410" style="zoom:67%;" />
 
 #### 3.5.2 输出后缀表达式
 
 命令：math -rev 表达式
 
-<img src="/Users/dzy/Library/Application Support/typora-user-images/image-20200805200501677.png" alt="image-20200805200501677" style="zoom:67%;" />
+<img src="assets/mathrec.png" alt="image-20200805200501677" style="zoom:67%;" />
 
 #### 3.5.3 格式统一
 
 命令：math -beauty 表达式
 
-<img src="/Users/dzy/Library/Application Support/typora-user-images/image-20200805200829902.png" alt="image-20200805200829902" style="zoom:67%;" />
+<img src="assets/math beauty.png" alt="image-20200805200829902" style="zoom:67%;" />
 
 #### 3.5.4 非法判断
 
 ##### 3.5.4.1 表达式有特殊符号
 
-<img src="/Users/dzy/Library/Application Support/typora-user-images/image-20200805200556701.png" alt="image-20200805200556701" style="zoom:67%;" />
+<img src="assets/matherror1.png" alt="image-20200805200556701" style="zoom:67%;" />
 
 ##### 3.5.4.2 括号不匹配
 
-<img src="/Users/dzy/Library/Application Support/typora-user-images/image-20200805200658599.png" alt="image-20200805200658599" style="zoom:67%;" />
+<img src="assets/matherror2.png" alt="image-20200805200658599" style="zoom:67%;" />
 
 ### 3.6 **用户级应用——秒表**
 
 用户输入watch指令，运行秒表功能。秒表每秒输出一次当前秒数，每十秒输出一次"Count 10 seconds."
 
-<img src="/Users/dzy/Library/Application Support/typora-user-images/image-20200806164156125.png" alt="image-20200806164156125" style="zoom:50%;" />
+<img src="assets/clock.png" alt="image-20200806164156125" style="zoom:50%;" />
 
 ### **3.7 用户级应用——推箱子**
 
 用户输入“game -box”进入推箱子游戏画面；首先系统打印地图，然后用户通过输入wasd来对小人进行移动，直至所有箱子已经推完，用户中途可以输入q直接退出游戏界面。
 
-<img src="/Users/dzy/Library/Application Support/typora-user-images/image-20200806164207873.png" alt="image-20200806164207873" style="zoom:50%;" />
+<img src="assets/box.png" alt="image-20200806164207873" style="zoom:50%;" />
 
 ### 3.8 **用户级应用——迷宫**
 
 用户输入“game -maze"指令，进入迷宫小游戏界面，首先打印迷宫地图，然后用户通过输入wasd进行人物的移动，直到到达终点，用户中途可以输入q直接退出游戏。
 
-<img src="/Users/dzy/Library/Application Support/typora-user-images/image-20200806164222962.png" alt="image-20200806164222962" style="zoom:50%;" />
+<img src="assets/maze.png" alt="image-20200806164222962" style="zoom:50%;" />
 
 ### 3.9 **用户级应用——扫雷**
 
 用户输入“game -saolei”指令，即可进入扫雷游戏界面；由Print_Interface()打印初始界面，用户通过输入一个坐标来掀开该地，会显示空地或附近的雷数量，直到扫除所有雷，或掀开一个地方有雷，游戏结束；用户也可输入“q”结束游戏。
 
-<img src="/Users/dzy/Library/Application Support/typora-user-images/image-20200806161957412.png" alt="image-20200806161957412" style="zoom:80%;" />
+<img src="assets/saolei.png" alt="image-20200806161957412" style="zoom:80%;" />
 
 ### 3.10 **用户级应用——数独**
 
 - 命令：game -sudoku
 
-<img src="/Users/dzy/Library/Application Support/typora-user-images/image-20200806173700674.png" alt="image-20200806173700674" style="zoom:50%;" />
+<img src="assets/sudoku.png" alt="image-20200806173700674" style="zoom:50%;" />
 
 - 获取答案，获取提示，错误提示：
 
-<img src="/Users/dzy/Library/Application Support/typora-user-images/image-20200806174556356.png" alt="image-20200806174556356" style="zoom:50%;" />
+<img src="assets/sudoerror.png" alt="image-20200806174556356" style="zoom:50%;" />
 
 - 填数字，重新开始：
 
-<img src="/Users/dzy/Library/Application Support/typora-user-images/image-20200806174621704.png" alt="image-20200806174621704" style="zoom:50%;" />
+<img src="assets/sudorenew.png" alt="image-20200806174621704" style="zoom:50%;" />
 
 ## 4. **功能实现**
 
